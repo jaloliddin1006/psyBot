@@ -1,0 +1,24 @@
+{
+  "name": "psybot",
+  "version": "1.0.0",
+  "description": "A Telegram bot designed to provide psychological support and guidance to users.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon --watch src --ext py --exec 'python src/main.py'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StepanVagin/psyBot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/StepanVagin/psyBot/issues"
+  },
+  "homepage": "https://github.com/StepanVagin/psyBot#readme",
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  }
+}

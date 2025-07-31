@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  psybot:
+    build: .
+    container_name: psybot
+    volumes:
+      - ./database:/app/database
+      - ./psybot.log:/app/psybot.log
+    environment:
+      - PYTHONUNBUFFERED=1
+    env_file:
+      - .env
+    restart: unless-stopped
+    ports:
+      - "8012:8012"  # Admin panel port
+    healthcheck:
+      test: ["CMD", "python", "-c", "import requests; requests.get('http://localhost:8012/health', timeout=5)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3 
