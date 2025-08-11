@@ -95,7 +95,7 @@ class ChromaManager:
             logger.error(f"Search xatolik: {e}")
             return {"documents": [], "metadatas": [], "distances": []}
     
-    def hybrid_search(self, query_text: str, query_embedding: List[float], n_results: int = 5) -> Dict:
+    def hybrid_search(self, query_text: str, query_embedding: List[float], n_results: int = 4) -> Dict:
         """Hybrid search - text va vector search ni birlashtirish"""
         try:
             # Vector search
@@ -108,7 +108,7 @@ class ChromaManager:
             try:
                 text_results = self.collection.query(
                     query_texts=[query_text],
-                    n_results=n_results
+                    n_results=n_results -1
                 )
                 
                 # Natijalarni birlashtirish (sodda usul)
