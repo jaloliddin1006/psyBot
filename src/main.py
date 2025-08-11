@@ -9,6 +9,7 @@ from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, FSInputFile, BotCommand
 from database.models import User
 from database.session import get_session, close_session
+from handlers.aichat import router as aichat_router
 from handlers.main_menu import router as main_menu_router
 from handlers.main_menu import main_menu
 from handlers.emotion_diary import router as emotion_diary_router
@@ -67,6 +68,7 @@ dp.include_router(weekly_reflection_router)
 dp.include_router(session_router)
 dp.include_router(therapy_themes_router)
 dp.include_router(relaxation_router)
+dp.include_router(aichat_router)
 # States
 WELCOME_STATE = "WELCOME_STATE"
 TERMS_AGREEMENT_STATE = "TERMS_AGREEMENT_STATE"
