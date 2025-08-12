@@ -17,7 +17,7 @@ from aiogram.filters import StateFilter
 from src.database.session import get_session, close_session
 from src.database.models import User, EmotionEntry, WeeklyReflection
 from .utils import delete_previous_messages
-from constants import EMOTION_ANALYSIS_PERIOD_SELECTION, MAIN_MENU
+from src.constants import EMOTION_ANALYSIS_PERIOD_SELECTION, MAIN_MENU
 from google import genai
 import asyncio
 from reportlab.lib.pagesizes import letter, A4

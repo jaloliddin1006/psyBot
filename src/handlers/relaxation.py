@@ -4,7 +4,7 @@ from aiogram.types import KeyboardButton, ReplyKeyboardMarkup, InlineKeyboardBut
 from aiogram.fsm.context import FSMContext
 from src.database.session import get_session, close_session
 from src.database.models import RelaxationMedia
-from constants import MAIN_MENU, RELAXATION_FORMAT_SELECTION, RELAXATION_AUDIO_LIST, RELAXATION_VIDEO_LIST
+from src.constants import MAIN_MENU, RELAXATION_FORMAT_SELECTION, RELAXATION_AUDIO_LIST, RELAXATION_VIDEO_LIST
 from aiogram import Router, F
 from .utils import delete_previous_messages
 from trial_manager import require_trial_access

@@ -5,7 +5,7 @@ from aiogram.fsm.context import FSMContext
 from aiogram.filters import StateFilter
 from src.database.session import get_session, close_session
 from src.database.models import User, WeeklyReflection
-from constants import (
+from src.constants import (
     WEEKLY_REFLECTION_START,
     WEEKLY_REFLECTION_SMILE_MOMENT,
     WEEKLY_REFLECTION_KINDNESS,

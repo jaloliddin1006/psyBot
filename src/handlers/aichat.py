@@ -3,7 +3,7 @@ from aiogram import types
 from aiogram.fsm.context import FSMContext
 from src.database.session import get_session, close_session
 from src.database.models import User
-from constants import MAIN_MENU
+from src.constants import MAIN_MENU
 from aiogram import Router, F
 from aiogram.filters import Command
 from .emotion_diary import start_emotion_diary

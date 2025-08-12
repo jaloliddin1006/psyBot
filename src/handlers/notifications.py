@@ -13,7 +13,7 @@ from aiogram.filters import StateFilter, Command
 from aiogram.fsm.context import FSMContext
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup, KeyboardButton
 
-from constants import NOTIFICATION_FREQUENCY_SELECTION, TIMEZONE_SELECTION_STATE
+from src.constants import NOTIFICATION_FREQUENCY_SELECTION, TIMEZONE_SELECTION_STATE
 from src.database.models import User
 from src.database.session import get_session, close_session
 from src.handlers.utils import delete_previous_messages

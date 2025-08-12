@@ -6,7 +6,7 @@ from src.database.session import get_session, close_session
 from src.database.models import User, EmotionEntry
 from src.handlers.thought_diary import handle_emotion_choice
 from .utils import delete_previous_messages
-from constants import *
+from src.constants import *
 import os
 from google import genai
 import asyncio

@@ -9,7 +9,7 @@ from src.database.models import User, EmotionEntry
 import os
 from google import genai
 from .utils import delete_previous_messages
-from constants import (
+from src.constants import (
     MAIN_MENU,
     THOUGHT_DIARY_AWAITING_POSITIVE_ENTRY, THOUGHT_DIARY_AWAITING_NEGATIVE_ENTRY,
     THOUGHT_DIARY_NEGATIVE_QUESTIONING,

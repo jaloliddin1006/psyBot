@@ -6,7 +6,7 @@ from aiogram.filters import StateFilter
 from src.database.session import get_session, close_session
 from src.database.models import User, TherapyTheme
 from .utils import delete_previous_messages
-from constants import *
+from src.constants import *
 from datetime import datetime, timedelta
 import os
 import tempfile

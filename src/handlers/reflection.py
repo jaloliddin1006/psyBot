@@ -5,7 +5,7 @@ from aiogram.fsm.context import FSMContext
 from aiogram.filters import StateFilter, Command
 from src.database.session import get_session, close_session
 from src.database.models import User, ReflectionEntry
-from constants import (
+from src.constants import (
     REFLECTION_VALUABLE_LEARNED,
     REFLECTION_OPENNESS_LEVEL,
     REFLECTION_OBSTACLES,
