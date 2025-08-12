@@ -3,8 +3,8 @@ from aiogram import Router, F
 from aiogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 from aiogram.fsm.context import FSMContext
 from aiogram.filters import StateFilter
-from database.session import get_session, close_session
-from database.models import User, WeeklyReflection
+from src.database.session import get_session, close_session
+from src.database.models import User, WeeklyReflection
 from constants import (
     WEEKLY_REFLECTION_START,
     WEEKLY_REFLECTION_SMILE_MOMENT,
@@ -14,7 +14,7 @@ from constants import (
     WEEKLY_REFLECTION_GRATITUDE
 )
 from google import genai
-from handlers.utils import delete_previous_messages
+from src.handlers.utils import delete_previous_messages
 from trial_manager import require_trial_access
 
 import os

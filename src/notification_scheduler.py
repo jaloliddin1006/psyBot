@@ -11,10 +11,10 @@ from datetime import datetime, timedelta
 from typing import List, Dict
 from dotenv import load_dotenv
 from aiogram import Bot
-from database.session import get_session, close_session
-from database.models import User, TherapySession
+from src.database.session import get_session, close_session
+from src.database.models import User, TherapySession
 from timezone_utils import SERVER_UTC_OFFSET
-from activity_tracker import is_user_actively_interacting
+from src.activity_tracker import is_user_actively_interacting
 
 load_dotenv()
 

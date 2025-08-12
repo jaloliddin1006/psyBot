@@ -179,8 +179,8 @@ python test_notifications.py
 # Check user settings
 python -c "
 import sys; sys.path.append('src')
-from database.session import get_session
-from database.models import User
+from src.database.session import get_session
+from src.database.models import User
 session = get_session()
 users = session.query(User).filter(User.notification_frequency.isnot(None)).all()
 for u in users: print(f'{u.full_name}: {u.notification_frequency}x/day')

@@ -8,8 +8,8 @@ import logging
 from datetime import datetime, timedelta
 from typing import Union
 from aiogram import types
-from database.models import User
-from database.session import get_session, close_session
+from src.database.models import User
+from src.database.session import get_session, close_session
 
 logger = logging.getLogger(__name__)
 

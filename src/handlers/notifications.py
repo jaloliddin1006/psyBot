@@ -14,9 +14,9 @@ from aiogram.fsm.context import FSMContext
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup, KeyboardButton
 
 from constants import NOTIFICATION_FREQUENCY_SELECTION, TIMEZONE_SELECTION_STATE
-from database.models import User
-from database.session import get_session, close_session
-from handlers.utils import delete_previous_messages
+from src.database.models import User
+from src.database.session import get_session, close_session
+from src.handlers.utils import delete_previous_messages
 from trial_manager import require_trial_access
 
 # Initialize logger and router
@@ -90,7 +90,7 @@ async def handle_frequency_selection(callback: types.CallbackQuery, state: FSMCo
     await callback.answer()
     
     if callback.data == "back_to_main":
-        from handlers.main_menu import main_menu
+        from src.handlers.main_menu import main_menu
         await delete_previous_messages(callback.message, state)
         await state.clear()
         await main_menu(callback, state)
@@ -275,7 +275,7 @@ async def back_to_notifications(callback: types.CallbackQuery, state: FSMContext
 async def back_to_main_from_notifications(callback: types.CallbackQuery, state: FSMContext):
     """Handle back to main menu from notifications"""
     await callback.answer()
-    from handlers.main_menu import main_menu
+    from src.handlers.main_menu import main_menu
     await delete_previous_messages(callback.message, state)
     await state.clear()
     await main_menu(callback, state) 

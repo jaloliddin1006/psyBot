@@ -3,8 +3,8 @@ from aiogram import types, F, Router
 from aiogram.fsm.context import FSMContext
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, FSInputFile
 from aiogram.filters import StateFilter
-from database.session import get_session, close_session
-from database.models import User, TherapyTheme
+from src.database.session import get_session, close_session
+from src.database.models import User, TherapyTheme
 from .utils import delete_previous_messages
 from constants import *
 from datetime import datetime, timedelta

@@ -3,8 +3,8 @@ from aiogram import Router, F
 from aiogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram.fsm.context import FSMContext
 from aiogram.filters import StateFilter, Command
-from database.session import get_session, close_session
-from database.models import User, ReflectionEntry
+from src.database.session import get_session, close_session
+from src.database.models import User, ReflectionEntry
 from constants import (
     REFLECTION_VALUABLE_LEARNED,
     REFLECTION_OPENNESS_LEVEL,

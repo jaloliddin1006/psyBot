@@ -7,25 +7,24 @@ from aiogram.filters import Command, CommandStart, StateFilter
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, FSInputFile, BotCommand
-from database.models import User
-from database.session import get_session, close_session
-from handlers.aichat import router as aichat_router
-from handlers.main_menu import router as main_menu_router
-from handlers.main_menu import main_menu
-from handlers.emotion_diary import router as emotion_diary_router
-from handlers.emotion_analysis import router as emotion_analysis_router
-from handlers.thought_diary import router as thought_diary_router
-from handlers.notifications import router as notifications_router
-from handlers.reflection import router as reflection_router
-from handlers.weekly_reflection import router as weekly_reflection_router
-from handlers.weekly_reflection import start_weekly_reflection
-from handlers.session import router as session_router
-from handlers.therapy_themes import router as therapy_themes_router
-from handlers.relaxation import router as relaxation_router
-from handlers.voice_handler import router as voice_handler_router
-from aiogram.filters import CommandObject
-from notification_scheduler import NotificationScheduler
-from activity_tracker import update_user_activity
+from src.database.models import User
+from src.database.session import get_session, close_session
+from src.handlers.aichat import router as aichat_router
+from src.handlers.main_menu import router as main_menu_router
+from src.handlers.main_menu import main_menu
+from src.handlers.emotion_diary import router as emotion_diary_router
+from src.handlers.emotion_analysis import router as emotion_analysis_router
+from src.handlers.thought_diary import router as thought_diary_router
+from src.handlers.notifications import router as notifications_router
+from src.handlers.reflection import router as reflection_router
+from src.handlers.weekly_reflection import router as weekly_reflection_router
+from src.handlers.weekly_reflection import start_weekly_reflection
+from src.handlers.session import router as session_router
+from src.handlers.therapy_themes import router as therapy_themes_router
+from src.handlers.relaxation import router as relaxation_router
+from src.handlers.voice_handler import router as voice_handler_router
+from src.notification_scheduler import NotificationScheduler
+from src.activity_tracker import update_user_activity
 
 # Load environment variables
 load_dotenv()
@@ -595,12 +594,12 @@ async def start_session_planning_callback(callback: types.CallbackQuery, state: 
     await state.clear()
     
     # Import and start session planning
-    from handlers.session import start_session_planning
+    from src.handlers.session import start_session_planning
     await start_session_planning(callback, state)
 
 @dp.callback_query(F.data == "start_using", StateFilter(BOT_CAPABILITIES_STATE))
 async def start_using_callback(callback: types.CallbackQuery, state: FSMContext):
-    from handlers.utils import show_pin_recommendation_and_main_menu
+    from src.handlers.utils import show_pin_recommendation_and_main_menu
     await show_pin_recommendation_and_main_menu(callback, state)
 
 @dp.message(Command("weekly"))

@@ -2,8 +2,8 @@ import logging
 from aiogram import types
 from aiogram.types import KeyboardButton, ReplyKeyboardMarkup, InlineKeyboardButton, InlineKeyboardMarkup
 from aiogram.fsm.context import FSMContext
-from database.session import get_session, close_session
-from database.models import User
+from src.database.session import get_session, close_session
+from src.database.models import User
 from constants import MAIN_MENU
 from aiogram import Router, F
 from aiogram.filters import Command

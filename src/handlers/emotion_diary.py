@@ -2,9 +2,9 @@ from aiogram import types, F, Router
 from aiogram.fsm.context import FSMContext
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from aiogram.filters import StateFilter
-from database.session import get_session, close_session
-from database.models import User, EmotionEntry
-from handlers.thought_diary import handle_emotion_choice
+from src.database.session import get_session, close_session
+from src.database.models import User, EmotionEntry
+from src.handlers.thought_diary import handle_emotion_choice
 from .utils import delete_previous_messages
 from constants import *
 import os
@@ -23,7 +23,7 @@ client = genai.Client(
 )
 
 async def return_to_main_menu(message: types.Message, state: FSMContext):
-    from handlers.main_menu import main_menu
+    from src.handlers.main_menu import main_menu
     await delete_previous_messages(message, state)
     await state.clear()
     await main_menu(message, state)
@@ -63,7 +63,7 @@ async def handle_emotion_selection(callback: types.CallbackQuery, state: FSMCont
     logger.info(f"handle_emotion_selection called with data: {callback.data} in state: {await state.get_state()}")
     await callback.answer()
     if callback.data == "back_to_main":
-        from handlers.main_menu import main_menu
+        from src.handlers.main_menu import main_menu
         await delete_previous_messages(callback.message, state)
         await state.clear()
         await main_menu(callback, state)
@@ -98,7 +98,7 @@ async def _handle_state_selection_logic(callback: types.CallbackQuery, state: FS
     logger.info(f"_handle_state_selection_logic called with data: {callback.data}, from_user.id: {callback.from_user.id}, is_good: {is_good} in state: {await state.get_state()}")
     await callback.answer()
     if callback.data == "back_to_main":
-        from handlers.main_menu import main_menu
+        from src.handlers.main_menu import main_menu
         await delete_previous_messages(callback.message, state)
         await state.clear()
         await main_menu(callback, state)
@@ -214,7 +214,7 @@ async def _handle_option_selection_logic(callback: types.CallbackQuery, state: F
             await state.set_state(BAD_STATE_SELECTION)
             return BAD_STATE_SELECTION
         else: # Fallback if selected_emotion is not found, though it should be
-            from handlers.main_menu import main_menu
+            from src.handlers.main_menu import main_menu
             await delete_previous_messages(callback.message, state)
             await state.clear()
             await main_menu(callback, state)
@@ -254,12 +254,12 @@ async def handle_after_support_choice(callback: types.CallbackQuery, state: FSMC
         # The thought diary flow will handle its own state and menu returns.
         return # End of this path
     elif callback.data == "to_main_menu":
-        from handlers.main_menu import main_menu
+        from src.handlers.main_menu import main_menu
         await state.clear()
         await main_menu(callback, state)
         return MAIN_MENU
     # Fallback or error, though ideally one of the buttons is always pressed.
-    from handlers.main_menu import main_menu
+    from src.handlers.main_menu import main_menu
     await state.clear()
     await main_menu(callback, state)
     return MAIN_MENU

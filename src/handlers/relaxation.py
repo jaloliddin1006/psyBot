@@ -2,8 +2,8 @@ import logging
 from aiogram import types
 from aiogram.types import KeyboardButton, ReplyKeyboardMarkup, InlineKeyboardButton, InlineKeyboardMarkup, FSInputFile
 from aiogram.fsm.context import FSMContext
-from database.session import get_session, close_session
-from database.models import RelaxationMedia
+from src.database.session import get_session, close_session
+from src.database.models import RelaxationMedia
 from constants import MAIN_MENU, RELAXATION_FORMAT_SELECTION, RELAXATION_AUDIO_LIST, RELAXATION_VIDEO_LIST
 from aiogram import Router, F
 from .utils import delete_previous_messages

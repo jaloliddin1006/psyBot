@@ -11,9 +11,9 @@ from datetime import datetime
 # Add src directory to path
 sys.path.append('src')
 
-from notification_scheduler import NotificationScheduler
-from database.session import get_session, close_session
-from database.models import User
+from src.notification_scheduler import NotificationScheduler
+from src.database.session import get_session, close_session
+from src.database.models import User
 
 async def test_notification_system():
     """Test the notification system"""
