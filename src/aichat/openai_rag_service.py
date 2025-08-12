@@ -63,6 +63,7 @@ class OpenAIRAGService:
             print(f"==================> 📂 books/ papkasi: {books_dir}")
             
             if not os.path.exists(books_dir):
+                logger.error(f"==================> 📂 books/ papkasi: {books_dir}")
                 logger.error("books/ papkasi topilmadi!")
                 print("❌ books/ papkasi topilmadi!")
                 return False
