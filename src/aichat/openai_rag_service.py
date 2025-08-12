@@ -59,8 +59,9 @@ class OpenAIRAGService:
     def process_books_pdfs(self) -> bool:
         """books/ papkasidagi PDF fayllarni processing qilish"""
         try:
-            books_dir = os.path.join(os.getcwd(), "books")
-            print(f"==================> 📂 books/ papkasi: {books_dir}")
+            base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+            books_dir = os.path.join(base_dir, "books")
+            logger.info(f"==================> 📂 books/ papkasi: {books_dir}")
             
             if not os.path.exists(books_dir):
                 logger.error(f"==================> 📂 books/ papkasi: {books_dir}")
