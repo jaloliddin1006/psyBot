@@ -13,7 +13,7 @@ from dotenv import load_dotenv
 from aiogram import Bot
 from src.database.session import get_session, close_session
 from src.database.models import User, TherapySession
-from timezone_utils import SERVER_UTC_OFFSET
+from src.timezone_utils import SERVER_UTC_OFFSET
 from src.activity_tracker import is_user_actively_interacting
 
 load_dotenv()

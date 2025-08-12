@@ -173,7 +173,7 @@ async def handle_timezone_change_from_time(message: types.Message, state: FSMCon
     user_time_str = message.text.strip()
     
     # Import timezone utility
-    from timezone_utils import calculate_timezone_offset
+    from src.timezone_utils import calculate_timezone_offset
     
     # Calculate timezone offset
     timezone_offset, user_timezone, error_msg = calculate_timezone_offset(user_time_str, server_time_str)
