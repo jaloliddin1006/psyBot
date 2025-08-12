@@ -8,7 +8,7 @@ from typing import Optional, Tuple, Dict
 import logging
 from src.database.models import User
 from src.database.session import get_session, close_session
-from freemium_config import (
+from src.freemium_config import (
     TRIAL_DURATION, TRIAL_FEATURES, PREMIUM_FEATURES, EXPIRED_FEATURES,
     TRIAL_EXPIRED_MESSAGE, TRIAL_WARNING_3_DAYS, TRIAL_WARNING_1_DAY,
     FEATURE_ACCESS_PAYMENT_MESSAGE
