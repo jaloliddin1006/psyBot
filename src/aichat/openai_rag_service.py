@@ -60,6 +60,7 @@ class OpenAIRAGService:
         """books/ papkasidagi PDF fayllarni processing qilish"""
         try:
             books_dir = os.path.join(os.getcwd(), "books")
+            print(f"==================> 📂 books/ papkasi: {books_dir}")
             
             if not os.path.exists(books_dir):
                 logger.error("books/ papkasi topilmadi!")
