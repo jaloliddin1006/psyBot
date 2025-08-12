@@ -12,9 +12,9 @@ import threading
 from pathlib import Path
 
 # Add src directory to path
-sys.path.append('src')
+# sys.path.append('src')
 
-from main import main
+from src.main import main
 
 def setup_logging():
     """Setup logging configuration"""
