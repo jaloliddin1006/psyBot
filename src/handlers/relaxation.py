@@ -7,7 +7,7 @@ from src.database.models import RelaxationMedia
 from src.constants import MAIN_MENU, RELAXATION_FORMAT_SELECTION, RELAXATION_AUDIO_LIST, RELAXATION_VIDEO_LIST
 from aiogram import Router, F
 from .utils import delete_previous_messages
-from trial_manager import require_trial_access
+from src.trial_manager import require_trial_access
 
 logger = logging.getLogger(__name__)
 router = Router(name=__name__)

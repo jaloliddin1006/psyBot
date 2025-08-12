@@ -54,7 +54,7 @@ async def main_menu(source: types.Message | types.CallbackQuery, state: FSMConte
         return MAIN_MENU
 
     # Check trial status
-    from trial_manager import check_trial_status, get_access_denied_message, has_feature_access
+    from src.trial_manager import check_trial_status, get_access_denied_message, has_feature_access
     trial_status, days_remaining = check_trial_status(db_user)
     
     # If trial expired, show expiry message and block access
@@ -119,7 +119,7 @@ async def handle_emotion_diary_button(message: types.Message, state: FSMContext)
             await message.answer("Пожалуйста, завершите регистрацию с помощью /start")
             return
         
-        from trial_manager import has_feature_access, get_access_denied_message
+        from src.trial_manager import has_feature_access, get_access_denied_message
         if not has_feature_access(db_user, 'emotion_diary'):
             await message.answer(get_access_denied_message('emotion_diary'))
             return
@@ -140,7 +140,7 @@ async def handle_emotion_analysis_button(message: types.Message, state: FSMConte
             await message.answer("Пожалуйста, завершите регистрацию с помощью /start")
             return
         
-        from trial_manager import has_feature_access, get_access_denied_message
+        from src.trial_manager import has_feature_access, get_access_denied_message
         if not has_feature_access(db_user, 'emotion_analytics'):
             await message.answer(get_access_denied_message('emotion_analytics'))
             return
@@ -162,7 +162,7 @@ async def handle_therapy_themes_button(message: types.Message, state: FSMContext
             await message.answer("Пожалуйста, завершите регистрацию с помощью /start")
             return
         
-        from trial_manager import has_feature_access, get_access_denied_message
+        from src.trial_manager import has_feature_access, get_access_denied_message
         if not has_feature_access(db_user, 'therapy_themes'):
             await message.answer(get_access_denied_message('therapy_themes'))
             return
@@ -184,7 +184,7 @@ async def handle_relaxation_methods_button(message: types.Message, state: FSMCon
             await message.answer("Пожалуйста, завершите регистрацию с помощью /start")
             return
         
-        from trial_manager import has_feature_access, get_access_denied_message
+        from src.trial_manager import has_feature_access, get_access_denied_message
         if not has_feature_access(db_user, 'relaxation_methods'):
             await message.answer(get_access_denied_message('relaxation_methods'))
             return
@@ -227,7 +227,7 @@ async def reflection_with_psychotherapist_handler(message: types.Message, state:
             await message.answer("Пожалуйста, завершите регистрацию с помощью /start")
             return
         
-        from trial_manager import has_feature_access, get_access_denied_message
+        from src.trial_manager import has_feature_access, get_access_denied_message
         if not has_feature_access(db_user, 'reflection'):
             await message.answer(get_access_denied_message('reflection'))
             return

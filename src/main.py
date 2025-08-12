@@ -529,7 +529,7 @@ async def save_referral_and_complete_registration(message_or_callback, state: FS
     db_user.registration_complete = True
     
     # Start trial period for new user
-    from trial_manager import start_trial_period
+    from src.trial_manager import start_trial_period
     start_trial_period(db_user)
     
     session.commit()

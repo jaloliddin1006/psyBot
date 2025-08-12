@@ -11,7 +11,7 @@ import os
 from google import genai
 import asyncio
 import logging
-from trial_manager import require_trial_access
+from src.trial_manager import require_trial_access
 
 # Initialize logger and router
 logger = logging.getLogger(__name__)

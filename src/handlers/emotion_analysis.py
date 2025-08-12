@@ -28,7 +28,7 @@ from reportlab.lib import colors
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 import urllib.request
-from trial_manager import require_trial_access
+from src.trial_manager import require_trial_access
 from dotenv import load_dotenv
 import matplotlib
 matplotlib.use('Agg')  # Use non-interactive backend

@@ -15,7 +15,7 @@ from src.database.session import get_session, close_session
 from src.database.models import User, TherapySession
 from src.constants import SESSION_DATE_TIME_INPUT, SESSION_CONFIRMATION
 from src.handlers.utils import delete_previous_messages
-from trial_manager import require_trial_access
+from src.trial_manager import require_trial_access
 
 logger = logging.getLogger(__name__)
 router = Router(name=__name__)

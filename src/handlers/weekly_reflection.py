@@ -15,7 +15,7 @@ from src.constants import (
 )
 from google import genai
 from src.handlers.utils import delete_previous_messages
-from trial_manager import require_trial_access
+from src.trial_manager import require_trial_access
 
 import os
 from dotenv import load_dotenv

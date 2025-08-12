@@ -17,7 +17,7 @@ from src.constants import NOTIFICATION_FREQUENCY_SELECTION, TIMEZONE_SELECTION_S
 from src.database.models import User
 from src.database.session import get_session, close_session
 from src.handlers.utils import delete_previous_messages
-from trial_manager import require_trial_access
+from src.trial_manager import require_trial_access
 
 # Initialize logger and router
 logger = logging.getLogger(__name__)

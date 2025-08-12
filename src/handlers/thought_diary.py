@@ -16,7 +16,7 @@ from src.constants import (
     THOUGHT_DIARY_AWAITING_POSITIVE_FEEDBACK, THOUGHT_DIARY_AWAITING_NEGATIVE_ACTION,
     THOUGHT_DIARY_AWAITING_RECOMMENDATION_FEEDBACK, THOUGHT_DIARY_AWAITING_RECONSIDER_FEEDBACK
 )
-from trial_manager import require_trial_access
+from src.trial_manager import require_trial_access
 
 logger = logging.getLogger(__name__)
 router = Router(name=__name__) # New router for thought diary

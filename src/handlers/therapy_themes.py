@@ -21,7 +21,7 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from collections import defaultdict
 from .emotion_analysis import setup_russian_fonts
-from trial_manager import require_trial_access
+from src.trial_manager import require_trial_access
 
 # Initialize logger and router
 logger = logging.getLogger(__name__)

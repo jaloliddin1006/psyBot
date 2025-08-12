@@ -228,7 +228,7 @@ class NotificationScheduler:
         logger.info(f"Checking notifications for server time: {current_time} on {current_day}")
         
         # Check and update expired trials
-        from trial_manager import check_and_update_expired_trials
+        from src.trial_manager import check_and_update_expired_trials
         expired_count = check_and_update_expired_trials()
         if expired_count > 0:
             logger.info(f"Updated {expired_count} expired trials")

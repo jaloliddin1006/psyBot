@@ -13,7 +13,7 @@ from src.constants import (
     REFLECTION_CONFIRMATION
 )
 from google import genai
-from trial_manager import require_trial_access
+from src.trial_manager import require_trial_access
 
 import os
 from dotenv import load_dotenv
