@@ -89,7 +89,7 @@ async def main_menu(source: types.Message | types.CallbackQuery, state: FSMConte
     
     logger.info(f"main_menu: Sending main menu to {name} (User ID: {actual_user.id})")
     sent_menu_message = await answer_target.answer(
-        f"Привет, {name}!{trial_info}\n\nЧто бы ты хотела сделать: зафиксировать свою эмоцию или поделиться впечатлениями после сессии с психотерапевтом?",
+        f"Привет, {name}!{trial_info}\n\nЧто бы ты хотела сделать: зафиксировать свою эмоцию или поделиться впечатлениями после сессии с психотерапевтом?\n\n Если хочешь обсудить что-то или разобрать какую-либо ситуацию, я готов тебе помочь в этом. Просто напиши мне ☺️",
         reply_markup=reply_markup
     )
     
