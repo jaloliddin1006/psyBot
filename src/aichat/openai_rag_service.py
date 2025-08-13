@@ -211,9 +211,9 @@ class OpenAIRAGService:
 
 ПРАВИЛА ОТВЕТА:
 1. Отвечайте только на предоставленных документах.
-2. Пишите ответ на узбекском языке.
-3. Будьте чёткими и понятными.
-4. Не упоминайте о базе данных, ее содержимом и существовании.
+2. Будьте чёткими и понятными.
+3. Не упоминайте о базе данных, ее содержимом и существовании.
+4. Не показывайте источники или названия файлов в ответе.
 
 ОТВЕТ:"""
 
@@ -230,13 +230,13 @@ class OpenAIRAGService:
             answer = response.choices[0].message.content.strip()
             
             # Qo'shimcha ma'lumot
-            source_files = set()
-            for metadata in search_results['metadatas'][0]:
-                if 'filename' in metadata:
-                    source_files.add(metadata['filename'])
+            # source_files = set()
+            # for metadata in search_results['metadatas'][0]:
+            #     if 'filename' in metadata:
+            #         source_files.add(metadata['filename'])
             
-            if source_files:
-                answer += f"\n\n📚 Manba fayllar: {', '.join(source_files)}"
+            # if source_files:
+            #     answer += f"\n\n📚 Manba fayllar: {', '.join(source_files)}"
             
             return answer
             
