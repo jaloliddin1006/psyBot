@@ -72,7 +72,7 @@ trial_expired BOOLEAN DEFAULT FALSE
 
 ### Trial Status Checking
 ```python
-from trial_manager import check_trial_status
+from src.trial_manager import check_trial_status
 
 status, days_remaining = check_trial_status(user)
 # status: 'premium', 'trial_active', 'trial_expired', 'no_trial'
@@ -81,7 +81,7 @@ status, days_remaining = check_trial_status(user)
 
 ### Feature Access Checking
 ```python
-from trial_manager import has_feature_access
+from src.trial_manager import has_feature_access
 
 if has_feature_access(user, 'emotion_diary'):
     # Allow access to emotion diary

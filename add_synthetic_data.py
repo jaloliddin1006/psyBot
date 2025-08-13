@@ -11,8 +11,8 @@ from datetime import datetime, timedelta
 # Add src to path
 sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
 
-from database.session import get_session, close_session
-from database.models import User, EmotionEntry, TherapyTheme
+from src.database.session import get_session, close_session
+from src.database.models import User, EmotionEntry, TherapyTheme
 
 def create_synthetic_emotion_entry(user_id: int, state: str, emotion_type: str, 
                                  created_at: datetime, answer_text: str = None, 

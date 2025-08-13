@@ -11,10 +11,10 @@ from datetime import datetime, timedelta
 from typing import List, Dict
 from dotenv import load_dotenv
 from aiogram import Bot
-from database.session import get_session, close_session
-from database.models import User, TherapySession
-from timezone_utils import SERVER_UTC_OFFSET
-from activity_tracker import is_user_actively_interacting
+from src.database.session import get_session, close_session
+from src.database.models import User, TherapySession
+from src.timezone_utils import SERVER_UTC_OFFSET
+from src.activity_tracker import is_user_actively_interacting
 
 load_dotenv()
 
@@ -228,7 +228,7 @@ class NotificationScheduler:
         logger.info(f"Checking notifications for server time: {current_time} on {current_day}")
         
         # Check and update expired trials
-        from trial_manager import check_and_update_expired_trials
+        from src.trial_manager import check_and_update_expired_trials
         expired_count = check_and_update_expired_trials()
         if expired_count > 0:
             logger.info(f"Updated {expired_count} expired trials")

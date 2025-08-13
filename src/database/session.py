@@ -1,5 +1,5 @@
 from sqlalchemy.orm import sessionmaker, scoped_session
-from database.models import get_engine
+from src.database.models import get_engine
 
 # Create a session factory
 engine = get_engine()

@@ -3,9 +3,9 @@ from aiogram import Router, F
 from aiogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram.fsm.context import FSMContext
 from aiogram.filters import StateFilter, Command
-from database.session import get_session, close_session
-from database.models import User, ReflectionEntry
-from constants import (
+from src.database.session import get_session, close_session
+from src.database.models import User, ReflectionEntry
+from src.constants import (
     REFLECTION_VALUABLE_LEARNED,
     REFLECTION_OPENNESS_LEVEL,
     REFLECTION_OBSTACLES,
@@ -13,7 +13,7 @@ from constants import (
     REFLECTION_CONFIRMATION
 )
 from google import genai
-from trial_manager import require_trial_access
+from src.trial_manager import require_trial_access
 
 import os
 from dotenv import load_dotenv

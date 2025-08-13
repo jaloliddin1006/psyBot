@@ -17,11 +17,11 @@ from aiogram.filters import StateFilter
 import openai
 from dotenv import load_dotenv
 from pydub import AudioSegment
-from constants import VOICE_TRANSCRIPTION_CONFIRMATION
-from database.models import User
-from database.session import get_session, close_session
-from handlers.utils import delete_previous_messages
-from trial_manager import require_trial_access
+from src.constants import VOICE_TRANSCRIPTION_CONFIRMATION
+from src.database.models import User
+from src.database.session import get_session, close_session
+from src.handlers.utils import delete_previous_messages
+from src.trial_manager import require_trial_access
 
 load_dotenv()
 

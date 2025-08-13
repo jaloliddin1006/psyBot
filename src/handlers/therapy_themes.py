@@ -3,10 +3,10 @@ from aiogram import types, F, Router
 from aiogram.fsm.context import FSMContext
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, FSInputFile
 from aiogram.filters import StateFilter
-from database.session import get_session, close_session
-from database.models import User, TherapyTheme
+from src.database.session import get_session, close_session
+from src.database.models import User, TherapyTheme
 from .utils import delete_previous_messages
-from constants import *
+from src.constants import *
 from datetime import datetime, timedelta
 import os
 import tempfile
@@ -21,7 +21,7 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from collections import defaultdict
 from .emotion_analysis import setup_russian_fonts
-from trial_manager import require_trial_access
+from src.trial_manager import require_trial_access
 
 # Initialize logger and router
 logger = logging.getLogger(__name__)

@@ -4,19 +4,19 @@ from aiogram import types, F, Router
 from aiogram.filters import StateFilter
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from aiogram.fsm.context import FSMContext
-from database.session import get_session, close_session
-from database.models import User, EmotionEntry
+from src.database.session import get_session, close_session
+from src.database.models import User, EmotionEntry
 import os
 from google import genai
 from .utils import delete_previous_messages
-from constants import (
+from src.constants import (
     MAIN_MENU,
     THOUGHT_DIARY_AWAITING_POSITIVE_ENTRY, THOUGHT_DIARY_AWAITING_NEGATIVE_ENTRY,
     THOUGHT_DIARY_NEGATIVE_QUESTIONING,
     THOUGHT_DIARY_AWAITING_POSITIVE_FEEDBACK, THOUGHT_DIARY_AWAITING_NEGATIVE_ACTION,
     THOUGHT_DIARY_AWAITING_RECOMMENDATION_FEEDBACK, THOUGHT_DIARY_AWAITING_RECONSIDER_FEEDBACK
 )
-from trial_manager import require_trial_access
+from src.trial_manager import require_trial_access
 
 logger = logging.getLogger(__name__)
 router = Router(name=__name__) # New router for thought diary
@@ -110,7 +110,7 @@ final_messages = {
 
 # Entry point from emotion_diary
 async def handle_emotion_choice(callback_query: types.CallbackQuery, state: FSMContext):
-    from handlers.main_menu import main_menu # For direct exit if needed
+    from src.handlers.main_menu import main_menu # For direct exit if needed
 
     user_id = callback_query.from_user.id
     current_fsm_state_at_entry = await state.get_state()
@@ -187,7 +187,7 @@ async def process_positive_entry(message: types.Message, state: FSMContext):
 @router.callback_query(StateFilter(THOUGHT_DIARY_AWAITING_POSITIVE_FEEDBACK), F.data == "td_back_to_main_after_positive")
 @require_trial_access('emotion_diary')
 async def process_positive_feedback_to_main(callback_query: types.CallbackQuery, state: FSMContext):
-    from handlers.main_menu import main_menu
+    from src.handlers.main_menu import main_menu
     user_id = callback_query.from_user.id
     logger.info(f"User {user_id}: Chose 'back to main' after positive entry. State: {await state.get_state()}")
     await callback_query.answer()
@@ -276,7 +276,7 @@ async def process_negative_follow_up(message: types.Message, state: FSMContext):
 @router.callback_query(StateFilter(THOUGHT_DIARY_NEGATIVE_QUESTIONING), F.data == "td_back_to_main_after_negative_entry")
 @require_trial_access('emotion_diary')
 async def process_negative_action_to_main(callback_query: types.CallbackQuery, state: FSMContext):
-    from handlers.main_menu import main_menu
+    from src.handlers.main_menu import main_menu
     user_id = callback_query.from_user.id
     logger.info(f"User {user_id}: Chose 'back to main' after negative entry. State: {await state.get_state()}")
     await callback_query.answer()
@@ -364,8 +364,8 @@ async def process_get_recommendation(callback_query: types.CallbackQuery, state:
 @router.callback_query(StateFilter(THOUGHT_DIARY_NEGATIVE_QUESTIONING), F.data == "td_mark_for_work")
 @require_trial_access('emotion_diary')
 async def process_mark_for_work(callback_query: types.CallbackQuery, state: FSMContext):
-    from handlers.main_menu import main_menu
-    from handlers.therapy_themes import add_theme_from_thought_diary
+    from src.handlers.main_menu import main_menu
+    from src.handlers.therapy_themes import add_theme_from_thought_diary
     
     user_id = callback_query.from_user.id
     await callback_query.answer("Запись отмечена для проработки.")
@@ -422,7 +422,7 @@ async def process_mark_for_work(callback_query: types.CallbackQuery, state: FSMC
 @router.callback_query(StateFilter(THOUGHT_DIARY_AWAITING_RECOMMENDATION_FEEDBACK), F.data == "td_recommendation_helped")
 @require_trial_access('emotion_diary')
 async def process_recommendation_helped(callback_query: types.CallbackQuery, state: FSMContext):
-    from handlers.main_menu import main_menu
+    from src.handlers.main_menu import main_menu
     user_id = callback_query.from_user.id
     await callback_query.answer("Спасибо за обратную связь!")
     logger.info(f"User {user_id}: Recommendation helped. State: {await state.get_state()}")
@@ -557,8 +557,8 @@ async def process_reconsider_advice(callback_query: types.CallbackQuery, state: 
 @require_trial_access('emotion_diary')
 async def process_mark_for_work_after_not_helped(callback_query: types.CallbackQuery, state: FSMContext):
     # This is similar to the generic td_mark_for_work, but called from a different state/button
-    from handlers.main_menu import main_menu
-    from handlers.therapy_themes import add_theme_from_thought_diary
+    from src.handlers.main_menu import main_menu
+    from src.handlers.therapy_themes import add_theme_from_thought_diary
     
     user_id = callback_query.from_user.id
     await callback_query.answer("Запись отмечена для проработки.")
@@ -627,7 +627,7 @@ async def process_mark_for_work_after_not_helped(callback_query: types.CallbackQ
 @router.callback_query(StateFilter(THOUGHT_DIARY_AWAITING_RECONSIDER_FEEDBACK), F.data == "td_back_to_main_after_not_helped")
 @require_trial_access('emotion_diary')
 async def process_reconsider_to_main(callback_query: types.CallbackQuery, state: FSMContext):
-    from handlers.main_menu import main_menu
+    from src.handlers.main_menu import main_menu
     user_id = callback_query.from_user.id
     logger.info(f"User {user_id}: Chose 'back to main' after not helped. State: {await state.get_state()}")
     await callback_query.answer()
@@ -640,7 +640,7 @@ async def process_reconsider_to_main(callback_query: types.CallbackQuery, state:
 @router.callback_query(F.data.startswith("td_back_to_main")) # Catches any td_back_to_main_*
 @require_trial_access('emotion_diary')
 async def process_generic_back_to_main(callback_query: types.CallbackQuery, state: FSMContext):
-    from handlers.main_menu import main_menu
+    from src.handlers.main_menu import main_menu
     user_id = callback_query.from_user.id
     current_fsm_state = await state.get_state()
     logger.warning(f"User {user_id}: Hit generic 'td_back_to_main' handler from state {current_fsm_state} with data {callback_query.data}. Navigating to main menu.")

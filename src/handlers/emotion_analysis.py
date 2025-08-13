@@ -14,10 +14,10 @@ from aiogram import types, F, Router
 from aiogram.fsm.context import FSMContext
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, FSInputFile
 from aiogram.filters import StateFilter
-from database.session import get_session, close_session
-from database.models import User, EmotionEntry, WeeklyReflection
+from src.database.session import get_session, close_session
+from src.database.models import User, EmotionEntry, WeeklyReflection
 from .utils import delete_previous_messages
-from constants import EMOTION_ANALYSIS_PERIOD_SELECTION, MAIN_MENU
+from src.constants import EMOTION_ANALYSIS_PERIOD_SELECTION, MAIN_MENU
 from google import genai
 import asyncio
 from reportlab.lib.pagesizes import letter, A4
@@ -28,7 +28,7 @@ from reportlab.lib import colors
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 import urllib.request
-from trial_manager import require_trial_access
+from src.trial_manager import require_trial_access
 from dotenv import load_dotenv
 import matplotlib
 matplotlib.use('Agg')  # Use non-interactive backend
@@ -125,7 +125,7 @@ async def start_emotion_analysis(message: types.Message, state: FSMContext):
 async def handle_back_to_main_from_analysis(callback: types.CallbackQuery, state: FSMContext):
     """Handle back to main menu from emotion analysis results"""
     await callback.answer()
-    from handlers.main_menu import main_menu
+    from src.handlers.main_menu import main_menu
     await delete_previous_messages(callback.message, state)
     await state.clear()
     await main_menu(callback, state)
@@ -138,7 +138,7 @@ async def handle_period_selection(callback: types.CallbackQuery, state: FSMConte
     await callback.answer()
     
     if callback.data == "back_to_main":
-        from handlers.main_menu import main_menu
+        from src.handlers.main_menu import main_menu
         await delete_previous_messages(callback.message, state)
         await state.clear()
         await main_menu(callback, state)
@@ -171,7 +171,7 @@ async def handle_period_selection(callback: types.CallbackQuery, state: FSMConte
         await callback.message.edit_text(f"За последние {period_days} дней записей в дневнике эмоций не найдено.")
         await delete_previous_messages(callback.message, state, keep_current=True)
         await state.clear()
-        from handlers.main_menu import main_menu
+        from src.handlers.main_menu import main_menu
         await main_menu(callback, state)
         return MAIN_MENU
     

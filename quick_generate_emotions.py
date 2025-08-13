@@ -9,8 +9,8 @@ import sys
 # Add src to path
 sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
 
-from database.session import get_session, close_session
-from database.models import User
+from src.database.session import get_session, close_session
+from src.database.models import User
 
 def main():
     """Quick generation for the first available user"""

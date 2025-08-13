@@ -27,6 +27,7 @@ class ChromaManager:
             # ChromaDB client yaratish (persistent)
             base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
             chroma_path = os.path.join(base_dir, "chroma_db")
+            print(f"=======================>> ChromaDB path: {chroma_path}")
             self.client = chromadb.PersistentClient(path=chroma_path)
             
             # Collection yaratish yoki olish

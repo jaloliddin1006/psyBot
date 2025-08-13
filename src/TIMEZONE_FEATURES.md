@@ -35,7 +35,7 @@ timezone_offset = getattr(user, 'timezone_offset', 0) or 0
 user_local_time = server_time + timedelta(hours=timezone_offset)
 
 # Server timezone configuration (UTC+3)
-from timezone_utils import calculate_timezone_offset
+from src.timezone_utils import calculate_timezone_offset
 offset, tz_string, error = calculate_timezone_offset(user_time, server_time)
 ```
 
